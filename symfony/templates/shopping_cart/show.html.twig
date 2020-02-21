@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ShoppingCart{% endblock %}
+
+{% block body %}
+    <h1>ShoppingCart</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Sid</th>
+                <td>{{ shopping_cart.sid }}</td>
+            </tr>
+            <tr>
+                <th>TotalSum</th>
+                <td>{{ shopping_cart.totalSum }}</td>
+            </tr>
+            <tr>
+                <th>LastSubmission</th>
+                <td>{{ shopping_cart.lastSubmission ? shopping_cart.lastSubmission|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('shopping_cart_index') }}">back to list</a>
+
+    <a href="{{ path('shopping_cart_edit', {'sid': shopping_cart.sid}) }}">edit</a>
+
+    {{ include('shopping_cart/_delete_form.html.twig') }}
+{% endblock %}

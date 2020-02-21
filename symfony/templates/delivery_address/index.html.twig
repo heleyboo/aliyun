@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}DeliveryAddress index{% endblock %}
+
+{% block body %}
+    <h1>DeliveryAddress index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Sid</th>
+                <th>UserId</th>
+                <th>ProvinceId</th>
+                <th>CityId</th>
+                <th>DistrictId</th>
+                <th>NeighborhoodId</th>
+                <th>Extra</th>
+                <th>CreatedAt</th>
+                <th>UpdatedAt</th>
+                <th>IsDefault</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for delivery_address in delivery_addresses %}
+            <tr>
+                <td>{{ delivery_address.sid }}</td>
+                <td>{{ delivery_address.userId }}</td>
+                <td>{{ delivery_address.provinceId }}</td>
+                <td>{{ delivery_address.cityId }}</td>
+                <td>{{ delivery_address.districtId }}</td>
+                <td>{{ delivery_address.neighborhoodId }}</td>
+                <td>{{ delivery_address.extra }}</td>
+                <td>{{ delivery_address.createdAt ? delivery_address.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ delivery_address.updatedAt ? delivery_address.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ delivery_address.isDefault ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('delivery_address_show', {'sid': delivery_address.sid}) }}">show</a>
+                    <a href="{{ path('delivery_address_edit', {'sid': delivery_address.sid}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="11">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('delivery_address_new') }}">Create new</a>
+{% endblock %}

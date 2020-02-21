@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ShoppingCart index{% endblock %}
+
+{% block body %}
+    <h1>ShoppingCart index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Sid</th>
+                <th>TotalSum</th>
+                <th>LastSubmission</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for shopping_cart in shopping_carts %}
+            <tr>
+                <td>{{ shopping_cart.sid }}</td>
+                <td>{{ shopping_cart.totalSum }}</td>
+                <td>{{ shopping_cart.lastSubmission ? shopping_cart.lastSubmission|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('shopping_cart_show', {'sid': shopping_cart.sid}) }}">show</a>
+                    <a href="{{ path('shopping_cart_edit', {'sid': shopping_cart.sid}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('shopping_cart_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}DeliveryAddress{% endblock %}
+
+{% block body %}
+    <h1>DeliveryAddress</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Sid</th>
+                <td>{{ delivery_address.sid }}</td>
+            </tr>
+            <tr>
+                <th>UserId</th>
+                <td>{{ delivery_address.userId }}</td>
+            </tr>
+            <tr>
+                <th>ProvinceId</th>
+                <td>{{ delivery_address.provinceId }}</td>
+            </tr>
+            <tr>
+                <th>CityId</th>
+                <td>{{ delivery_address.cityId }}</td>
+            </tr>
+            <tr>
+                <th>DistrictId</th>
+                <td>{{ delivery_address.districtId }}</td>
+            </tr>
+            <tr>
+                <th>NeighborhoodId</th>
+                <td>{{ delivery_address.neighborhoodId }}</td>
+            </tr>
+            <tr>
+                <th>Extra</th>
+                <td>{{ delivery_address.extra }}</td>
+            </tr>
+            <tr>
+                <th>CreatedAt</th>
+                <td>{{ delivery_address.createdAt ? delivery_address.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>UpdatedAt</th>
+                <td>{{ delivery_address.updatedAt ? delivery_address.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>IsDefault</th>
+                <td>{{ delivery_address.isDefault ? 'Yes' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('delivery_address_index') }}">back to list</a>
+
+    <a href="{{ path('delivery_address_edit', {'sid': delivery_address.sid}) }}">edit</a>
+
+    {{ include('delivery_address/_delete_form.html.twig') }}
+{% endblock %}

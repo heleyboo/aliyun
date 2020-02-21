@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}User{% endblock %}
+
+{% block body %}
+    <h1>User</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Sid</th>
+                <td>{{ user.sid }}</td>
+            </tr>
+            <tr>
+                <th>OpenId</th>
+                <td>{{ user.openId }}</td>
+            </tr>
+            <tr>
+                <th>UnionId</th>
+                <td>{{ user.unionId }}</td>
+            </tr>
+            <tr>
+                <th>JingdongId</th>
+                <td>{{ user.jingdongId }}</td>
+            </tr>
+            <tr>
+                <th>Grade</th>
+                <td>{{ user.grade }}</td>
+            </tr>
+            <tr>
+                <th>CreatedAt</th>
+                <td>{{ user.createdAt ? user.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>LastLogin</th>
+                <td>{{ user.lastLogin ? user.lastLogin|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('user_index') }}">back to list</a>
+
+    <a href="{{ path('user_edit', {'sid': user.sid}) }}">edit</a>
+
+    {{ include('user/_delete_form.html.twig') }}
+{% endblock %}
