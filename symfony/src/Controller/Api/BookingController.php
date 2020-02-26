@@ -24,6 +24,9 @@ class BookingController extends AbstractController
             ->getRepository(Booking::class)
             ->findAll();
 
-        return new JsonResponse(json_decode($this->get('serializer')->serialize($bookings, 'json')));
+        $data['status'] = 'success';
+        $data['data'] = json_decode($this->get('serializer')->serialize($bookings, 'json'));
+
+        return new JsonResponse($data);
     }
 }
